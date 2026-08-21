@@ -7,26 +7,25 @@ import java.util.regex.Pattern;
 
 public class Student {
     private String name;
-
-    public List<String> getCourses() {
-        return courses;
-    }
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public int getAge() {
-        return age;
-    }
+    private int age;
+    private String studentId;
+    private List<String> courses;
 
     public String getName() {
         return name;
     }
-
-    private int age;
-    private String studentId;
-    private List<String> courses;
+    
+    public int getAge() {
+        return age;
+    }
+    
+    public String getStudentId() {
+        return studentId;
+    }
+    
+    public List<String> getCourses() {
+        return courses;
+    }
 
     public Student(String name, int age, String studentId) {
         if(validateAge(age) && validateName(name) && validateStudentId(studentId)) {
@@ -36,8 +35,6 @@ public class Student {
             courses = new ArrayList<String>();
         }
     }
-
-
 
     public void enrollCourse(String course){
         if(validateCourseName(course)) {
