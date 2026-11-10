@@ -31,13 +31,13 @@ public class Main {
                     findStudentById(scanner);
                     break;
                 case 3:
-                    printAllStudentData(scanner);
+                    printAllStudentData();
                 case 4:
                     sortByName();
                     break;
                 case 5:
                     System.out.println("GOOD BYEEEEE!!!!!!");
-                    exit(0);
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Invalid number selected. Select any number between 1 to 5");
@@ -48,10 +48,10 @@ public class Main {
     private static void sortByName() {
         Comparator<Student> studentNameComparator = (o1,o2) -> o1.getName().compareTo(o2.getName());
         Collections.sort(studentList, studentNameComparator);
-        System.out.println(studentList);
+        printAllStudentData();
     }
 
-    private static void printAllStudentData(Scanner scanner) {
+    private static void printAllStudentData() {
         if(studentList.size()>0){
             System.out.println("*********************** PRINT ALL STUDENT DATA **************************");
             for(Student student: studentList){
@@ -76,7 +76,7 @@ public class Main {
         studentList.add(newStudentObj);
 
         while(true) {
-            System.out.println("ENter course to be enrolled...Else type done.");
+            System.out.println("Enter course to be enrolled...Else type done.");
             String course = scanner.next();
             if(course.equalsIgnoreCase("done"))
                 break;
@@ -90,10 +90,10 @@ public class Main {
         System.out.println("Enter studentId");
         String studentId = scanner.next();
         try {
-            result = studentList.stream()
-                    .filter(x -> x.getStudentId().equalsIgnoreCase(studentId))
-                    .findFirst()
-                    .orElseThrow(() -> new RuntimeException("No data found"));
+            result = studentList.stream().
+                    filter(x -> x.getStudentId().equalsIgnoreCase(studentId)).
+                    findFirst().
+                    orElseThrow(() -> new RuntimeException("No data found!!!"));
         }catch(RuntimeException e){
             System.err.println("StudentId "+studentId+" not found!!");
         }

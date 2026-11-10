@@ -11,6 +11,14 @@ public class Student {
     private String studentId;
     private List<String> courses;
 
+    public Student(String name, int age, String studentId) {
+        if(validateAge(age) && validateName(name) && validateStudentId(studentId)) {
+            this.name = name;
+            this.age = age;
+            this.studentId = studentId;
+            courses = new ArrayList<String>(); // Initialization of courses
+        }
+    }
     public String getName() {
         return name;
     }
@@ -25,15 +33,6 @@ public class Student {
     
     public List<String> getCourses() {
         return courses;
-    }
-
-    public Student(String name, int age, String studentId) {
-        if(validateAge(age) && validateName(name) && validateStudentId(studentId)) {
-            this.name = name;
-            this.age = age;
-            this.studentId = studentId;
-            courses = new ArrayList<String>();
-        }
     }
 
     public void enrollCourse(String course){
@@ -51,8 +50,8 @@ public class Student {
         System.out.println("_______________________ Student Info _______________________");
         System.out.println("Student Name: "+name);
         System.out.println("Student Age: "+age);
-        System.out.println("Student studentId: "+studentId);
-        System.out.println("Student enrolled courses: "+courses);
+        System.out.println("Student StudentId: "+studentId);
+        System.out.println("Enrolled for Courses: "+courses);
     }
 
     @Override
